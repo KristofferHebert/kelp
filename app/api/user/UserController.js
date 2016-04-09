@@ -49,6 +49,23 @@ const UserController = {
         })
 
         return promise
+    },
+
+    // Get User by User email
+
+    getUserByEmail(email){
+        const promise = new Promise((resolve, reject) => {
+            UserModel.findOne({email: email}, (err, user) => {
+
+                if(err)
+                    return reject(err)
+
+                return resolve(user)
+            })
+
+        })
+
+        return promise
     }
 
 }
