@@ -1,6 +1,6 @@
 import UserModel from './UserModel'
 
-UserController = {
+const UserController = {
 
     // Get User by ID, returns a promise
     get(id){
