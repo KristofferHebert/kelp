@@ -1,13 +1,11 @@
 import mongoose from 'mongoose'
 import config from '../config'
 
-let db = mongoose
-
 // Set Database based on enviroment
 const database = (process.env.ENVIROMENT === 'production') ? config.live_db : config.staging_db
 
-console.log(database)
+let db = mongoose.createConnection('mongodb://localhost/' + database)
 
-db.connect('mongodb://localhost/' + database)
+db.Schema = mongoose.Schema
 
 export default db
