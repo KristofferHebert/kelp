@@ -5,13 +5,25 @@ const UserController = {
     // Get User by ID, returns a promise
     get(id){
         const promise = new Promise((resolve, reject) => {
-            UserModel.findOne({_id: id}, (err, user) => {
 
-                if(err)
-                    return reject(err)
+            if(id) {
+                UserModel.findOne({_id: id}, (err, user) => {
 
-                return resolve(user)
-            })
+                    if(err)
+                        return reject(err)
+
+                    return resolve(user)
+                })
+            } else {
+                UserModel.find({}, (err, user) => {
+
+                    if(err)
+                        return reject(err)
+
+                    return resolve(user)
+                })
+
+            }
 
         })
 

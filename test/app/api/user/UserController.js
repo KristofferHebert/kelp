@@ -5,6 +5,7 @@ import assert from 'assert'
 
 describe('Testing User Controller', () => {
     it('Can create user via UserController.post', (done) => {
+
         UserController.post({
             'email': 'test@test.com',
             'password': 'test'
@@ -43,15 +44,7 @@ describe('Testing User Controller', () => {
             UserController.delete(user._id).then((response) => {
 
                 assert.equal(response.result.ok, 1)
-
-                UserController.getUserByEmail('test@test.com').then((usr) => {
-
-                    assert.equal(usr, null)
-
-                    done()
-
-                })
-
+                done()
             })
 
         })
