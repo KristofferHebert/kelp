@@ -1,4 +1,4 @@
-import UserModel from './UserModel'
+import UserModel from './usermodel'
 
 const UserController = {
 
