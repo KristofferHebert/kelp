@@ -15,6 +15,9 @@ app.use(express.static(__dirname + '/public'))
 // Compress all assets
 app.use(compression())
 
+// Use body parser
+app.use(bodyParser.urlencoded({ extended: true }))
+
 // Add routes
 app.use(routes)
 

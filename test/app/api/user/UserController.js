@@ -1,5 +1,5 @@
 const ROOT = require('app-root-path').path
-const UserController = require(ROOT + '/app/api/user/UserController').default
+const UserController = require(ROOT + '/app/api/user/usercontroller').default
 
 import assert from 'assert'
 
