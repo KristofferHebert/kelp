@@ -1,10 +1,22 @@
+// Some inspiration from http://www.thebuttonfactory.nl/?p=2496
+
 import db from '../db'
+import passportLocalMongoose from 'passport-local-mongoose'
 
 const Schema = db.Schema
+
 const UserSchema = new Schema({
-    email: String,
-    password: String
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    }
 })
+
+UserSchema.plugins(passportLocalMongoose)
 
 const UserModel = db.model('user', UserSchema)
 
