@@ -7,15 +7,15 @@ const ReviewSchema = new Schema({
         type: String,
         required: true
     },
-    user: {
+    owner_id: {
         type: String,
         required: true
     },
-    restaurant: {
+    restaurant_id: {
         type: String,
         required: true
     },
-    comment: {
+    body: {
         type: String,
         required: true
     },

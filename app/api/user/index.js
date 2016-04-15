@@ -1,11 +1,14 @@
 import db from '../db'
-import UserController from './usercontroller'
-import UserModel from './usermodel'
+import ReviewController from './usercontroller'
+import ReviewModel from './usermodel'
+import ReviewPresenter from './userpresenter'
+import ReviewRouter from './userrouter'
 
-
-const User = {
-    Model: UserModel,
-    Controller: UserController
+const Review = {
+    Model: ReviewModel,
+    Controller: ReviewController,
+    Presenter: ReviewPresenter,
+    Router: ReviewRouter
 }
 
-export default User
+export default Review
