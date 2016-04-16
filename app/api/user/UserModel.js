@@ -17,7 +17,7 @@ const UserSchema = new Schema({
     }
 })
 
-UserSchema.plugins(passportLocalMongoose)
+UserSchema.plugin(passportLocalMongoose)
 
 const UserModel = db.model('user', UserSchema)
 

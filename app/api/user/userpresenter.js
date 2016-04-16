@@ -1,3 +1,3 @@
-const UserPresenter
+const UserPresenter = null
 
 export default UserPresenter
