@@ -5,6 +5,7 @@ const Schema = db.Schema
 const ReviewSchema = new Schema({
     title: {
         type: String,
+        maxlength: 100,
         required: true
     },
     owner_id: {
@@ -17,10 +18,13 @@ const ReviewSchema = new Schema({
     },
     body: {
         type: String,
+        maxlength: 300,
         required: true
     },
     stars: {
         type: Number,
+        max: 5,
+        min: 1,
         required: true
     }
 })

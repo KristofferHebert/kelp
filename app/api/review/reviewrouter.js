@@ -16,21 +16,19 @@ ReviewRouter.get('/', (req, res) => {
 })
 
 ReviewRouter.post('/', (req, res) => {
-    if(!req.body.email) {
-        return res.status(400).json({
-            error: "Please provide email"
-        })
-    }
 
-    if(!validator.isEmail(req.body.email)) {
+    if(!validator.isNumeric(req.body.stars)) {
         return res.status(400).json({
-            error: "Please provide valid email"
+            error: "Please provide valid stars as number"
         })
     }
 
     Review.Controller.post({
-        email: req.body.email,
-        password: req.body.password
+        title: req.body.title,
+        owner_id: req.body.owner_id,
+        restaurant_id: req.body.restaurant_id,
+        body: req.body.body,
+        stars: req.body.stars
     })
     .then((result) => {
         res.json(result)
@@ -52,6 +50,15 @@ ReviewRouter.get('/:id', (req, res) => {
         })
 })
 
-
+ReviewRouter.delete('/:id', (req, res) => {
+    const id = req.params['id']
+    Review.Controller.delete(id)
+        .then((result) => {
+            res.json(result)
+        })
+        .catch((err) => {
+            res.status(400).json(err)
+        })
+})
 
 export default ReviewRouter
