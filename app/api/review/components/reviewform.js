@@ -17,7 +17,7 @@ const ReviewForm = React.createClass({
 
     },
     handleSubmit(e){
-        
+
         e.preventDefault()
     },
     handleChange(e){
@@ -28,7 +28,7 @@ const ReviewForm = React.createClass({
     },
     render(){
         return (
-            <form>
+            <form {...this.props}>
                 <label for="title">
                     <input name="title" type="text" value={this.state.title} placeholder="Title" onChange={this.handleChange} required/>
                 </label>
