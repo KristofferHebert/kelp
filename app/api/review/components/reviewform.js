@@ -1,4 +1,4 @@
-import React from 'react'
+import React function (arguments) {}rom 'react'
 
 const ReviewForm = React.createClass({
     setInitialState(){

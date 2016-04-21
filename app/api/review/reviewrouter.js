@@ -6,18 +6,18 @@ import Review from './'
 let ReviewRouter = express.Router()
 
 ReviewRouter.get('/', (req, res) => {
-    Review.Controller.get()
-        .then((result) => {
-            res.json(result)
-        })
-        .catch((err) => {
-            res.status(400).json(err)
-        })
+  Review.Controller.get()
+    .then((result) => {
+        res.json(result)
+    })
+    .catch((err) => {
+        res.status(400).json(err)
+    })
 })
 
 ReviewRouter.post('/', (req, res) => {
 
-    if(!validator.isNumeric(req.body.stars)) {
+    if (!validator.isNumeric(req.body.stars)) {
         return res.status(400).json({
             error: "Please provide valid stars as number"
         })
