@@ -10,12 +10,6 @@ const ReviewForm = React.createClass({
             stars: ""
         }
     },
-    componentWillMount(){
-
-    },
-    getInitialProps(){
-
-    },
     handleSubmit(e){
 
         e.preventDefault()
