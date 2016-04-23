@@ -5,12 +5,12 @@ const ReviewItem = React.createClass({
     const className = 'stars stars-' + this.props.stars
 
     return (
-        <li className={this.props.className}>
-          <h3>{this.props.title}</h3>
-          <p><i className={className}>{this.props.stars}</i> <span>By {this.props.owner_name}</span></p>
-          <p>{this.props.body}</p>
-        </li>
-      )
+      <li className={this.props.className}>
+        <h3>{this.props.title}</h3>
+        <p><i className={className}>{this.props.stars}</i> <span>By {this.props.owner_name}</span></p>
+        <p>{this.props.body}</p>
+      </li>
+    )
   }
 })
 

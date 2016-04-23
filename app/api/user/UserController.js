@@ -1,4 +1,3 @@
-import passport from 'passport'
 import UserModel from './usermodel'
 
 const UserController = {
@@ -41,7 +40,7 @@ const UserController = {
   },
 
   // Authenticate via email and password
-  authenticate (email, password) {
+  login (email, password) {
     const promise = new Promise((resolve, reject) => {
       this.getUserByEmail(email)
       .then((user) => {

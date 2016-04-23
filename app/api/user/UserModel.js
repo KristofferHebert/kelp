@@ -31,9 +31,6 @@ UserSchema.plugin(passportLocalMongoose, {
   usernameField: 'email'
 })
 
-
-
-
 const UserModel = db.model('user', UserSchema)
 
 export default UserModel
