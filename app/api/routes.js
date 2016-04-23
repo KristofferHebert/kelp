@@ -6,6 +6,11 @@ const routes = express.Router()
 routes.use('/user', UserRouter)
 routes.use('/review', ReviewRouter)
 
+// Home
+routes.use('/', (req, res) => {
+  res.render('home')
+})
+
 // Global 404 response
 routes.get('*', (req, res) => {
   res.send('<h1>404 - Missing Page</h1>', 404)

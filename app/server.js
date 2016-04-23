@@ -26,9 +26,10 @@ app.use(compression())
 app.engine('.hbs', exphbs({
   extname: '.hbs',
   defaultLayout: 'main',
-  layoutsDir: path.join(__dirname, 'view')
+  layoutsDir: path.join(__dirname, '/views/layouts')
 }))
 
+app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', '.hbs')
 
 // Adding Middlewares

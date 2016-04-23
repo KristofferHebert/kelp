@@ -34,8 +34,7 @@ const ReviewForm = React.createClass({
         </label>
         <input name='submit' type='submit' />
       </form>
-      )
-  }
+      )  }
 })
 
 export default ReviewForm
