@@ -11,14 +11,15 @@ const UserSchema = new Schema({
     type: String,
     unique: true,
     trim: true,
-    required: true
+    required: 'Email address is required',
+    validate: [isEmail, 'Please provide a valid email address'],
+    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please provide a valid email address']
   },
   password: {
     type: String,
     trim: true,
-    required: 'Email address is required',
-    validate: [isEmail, 'Please provide a valid email address'],
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please provide a valid email address']
+    required: 'Password is required',
+    select: false
   }
 })
 
@@ -26,7 +27,12 @@ function isEmail (str) {
   return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(str)
 }
 
-UserSchema.plugin(passportLocalMongoose)
+UserSchema.plugin(passportLocalMongoose, {
+  usernameField: 'email'
+})
+
+
+
 
 const UserModel = db.model('user', UserSchema)
 

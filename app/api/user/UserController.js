@@ -1,84 +1,91 @@
+import passport from 'passport'
 import UserModel from './usermodel'
 
 const UserController = {
 
-    // Get User by ID, returns a promise
-    get(id){
-        const promise = new Promise((resolve, reject) => {
-
-            if(id) {
-                UserModel.findOne({_id: id}, (err, user) => {
-
-                    if(err)
-                        return reject(err)
-
-                    return resolve(user)
-                })
-            } else {
-                UserModel.find({}, (err, user) => {
-
-                    if(err)
-                        return reject(err)
-
-                    return resolve(user)
-                })
-
-            }
-
+  // Get User by ID, returns a promise
+  get (id) {
+    const promise = new Promise((resolve, reject) => {
+      if (id) {
+        UserModel.findOne({_id: id}, (err, user) => {
+          if (err) {
+            return reject(err)
+          }
+          return resolve(user)
         })
-
-        return promise
-    },
-
-    // Create User based on data object, returns a promise
-    post(data){
-        const newuser = new UserModel(data)
-
-        const promise = new Promise((resolve, reject) => {
-            newuser.save((err, newuser)=> {
-
-                if(err)
-                    return reject(err)
-
-                return resolve(newuser)
-            })
+      } else {
+        UserModel.find({}, (err, user) => {
+          if (err) {
+            return reject(err)
+          }
+          return resolve(user)
         })
+      }
+    })
+    return promise
+  },
 
-        return promise
-    },
+  // Create User based on data object, returns a promise
+  post (data) {
+    const promise = new Promise((resolve, reject) => {
+      console.log()
+      UserModel.register(new UserModel(data), data.password, function (err, user) {
+        if (err) {
+          return reject(err)
+        }
+        resolve(user)
+      })
+    })
 
-    // Delete User based on ID, returns a promise
-    delete(id){
-        const promise = new Promise((resolve, reject) => {
-            UserModel.findOne({_id: id}).remove((err, removed) => {
+    return promise
+  },
 
-                if(err)
-                    return reject(err)
-
-                return resolve(removed)
-            })
-
+  // Authenticate via email and password
+  authenticate (email, password) {
+    const promise = new Promise((resolve, reject) => {
+      this.getUserByEmail(email)
+      .then((user) => {
+        if (!user) return resolve(null)
+        user.authenticate(password, (err, user) => {
+          if (err) reject(err)
+          resolve(user)
         })
+      })
+      .catch((err) => {
+        reject(err)
+      })
+    })
 
-        return promise
-    },
+    return promise
+  },
 
-    // Get User by User email
+  // Delete User based on ID, returns a promise
+  delete (id) {
+    const promise = new Promise((resolve, reject) => {
+      UserModel.findOne({_id: id}).remove((err, removed) => {
+        if (err) {
+          return reject(err)
+        }
+        return resolve(removed)
+      })
+    })
 
-    getUserByEmail(email){
-        const promise = new Promise((resolve, reject) => {
-            UserModel.findOne({email: email}, (err, user) => {
+    return promise
+  },
 
-                if(err)
-                    return reject(err)
+  // Get User by User email
+  getUserByEmail (email) {
+    const promise = new Promise((resolve, reject) => {
+      UserModel.findOne({email: email}, (err, user) => {
+        if (err) {
+          return reject(err)
+        }
+        return resolve(user)
+      })
+    })
 
-                return resolve(user)
-            })
-
-        })
-
-        return promise
-    }
+    return promise
+  }
 
 }
 

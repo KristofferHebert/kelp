@@ -6,49 +6,47 @@ import User from './'
 let UserRouter = express.Router()
 
 UserRouter.get('/', (req, res) => {
-    User.Controller.get()
-        .then((result) => {
-            res.json(result)
-        })
-        .catch((err) => {
-            res.status(400).json(err)
-        })
+  User.Controller.get()
+      .then((result) => {
+        res.json(result)
+      })
+      .catch((err) => {
+        res.status(400).json(err)
+      })
 })
 
 UserRouter.post('/', (req, res) => {
-    if(!req.body.email) {
-        return res.status(400).json({
-            error: "Please provide email"
-        })
-    }
-
-    if(!validator.isEmail(req.body.email)) {
-        return res.status(400).json({
-            error: "Please provide valid email"
-        })
-    }
-
-    User.Controller.post({
-        email: req.body.email,
-        password: req.body.password
+  if (!req.body.email) {
+    return res.status(400).json({
+      error: 'Please provide email'
     })
+  }
+
+  if (!validator.isEmail(req.body.email)) {
+    return res.status(400).json({
+      error: 'Please provide valid email'
+    })
+  }
+
+  console.log(req.body)
+
+  User.Controller.post(req.body)
     .then((result) => {
-        res.json(result)
+      res.json(result)
     })
     .catch((err) => {
-        res.status(400).json(err)
+      res.status(400).json(err)
     })
 })
 
-
 UserRouter.get('/:id', (req, res) => {
-    const id = req.params['id']
-    User.Controller.get(id)
+  const id = req.params['id']
+  User.Controller.get(id)
         .then((result) => {
-            res.json(result)
+          res.json(result)
         })
         .catch((err) => {
-            res.status(400).json(err)
+          res.status(400).json(err)
         })
 })
 

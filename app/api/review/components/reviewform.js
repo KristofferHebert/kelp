@@ -3,6 +3,7 @@ import React from 'react'
 const ReviewForm = React.createClass({
   setInitialState () {
     return {
+      trim: true,
       title: '',
       owner_id: '',
       restaurant_id: '',
@@ -34,7 +35,7 @@ const ReviewForm = React.createClass({
         </label>
         <input name='submit' type='submit' />
       </form>
-      )  }
+      ) }
 })
 
 export default ReviewForm
