@@ -28,8 +28,6 @@ UserRouter.post('/', (req, res) => {
     })
   }
 
-  console.log(req.body)
-
   User.Controller.post(req.body)
     .then((result) => {
       res.json(result)
@@ -40,8 +38,7 @@ UserRouter.post('/', (req, res) => {
 })
 
 UserRouter.get('/:id', (req, res) => {
-  const id = req.params['id']
-  User.Controller.get(id)
+  User.Controller.get(req.params['id'])
         .then((result) => {
           res.json(result)
         })
@@ -49,7 +46,5 @@ UserRouter.get('/:id', (req, res) => {
           res.status(400).json(err)
         })
 })
-
-
 
 export default UserRouter
