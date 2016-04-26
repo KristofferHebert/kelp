@@ -9,7 +9,8 @@ const RestaurantSchema = new Schema({
     required: true
   },
   images: {
-    type: Array
+    type: Array,
+    required: true
   },
   reviews: [ ReviewSchema ]
 })
