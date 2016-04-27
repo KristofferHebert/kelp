@@ -8,7 +8,11 @@ routes.use('/review', ReviewRouter)
 
 // Home
 routes.use('/', (req, res) => {
-  res.render('home')
+  res.render('home', {
+    locals: {
+      body: 'test'
+    }
+  })
 })
 
 // Global 404 response
