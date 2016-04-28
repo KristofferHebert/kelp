@@ -1,6 +1,7 @@
-import db from '../db'
+import mongoose from 'mongoose'
 import ReviewSchema from '../review/reviewmodel'
-const Schema = db.Schema
+
+const Schema = mongoose.Schema
 
 const RestaurantSchema = new Schema({
   name: {
@@ -15,6 +16,6 @@ const RestaurantSchema = new Schema({
   reviews: [ ReviewSchema ]
 })
 
-const RestaurantModel = db.model('review', RestaurantSchema)
+const RestaurantModel = mongoose.model('review', RestaurantSchema)
 
 export default RestaurantModel

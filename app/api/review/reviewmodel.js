@@ -1,6 +1,6 @@
-import db from '../db'
+import mongoose from 'mongoose'
 
-const Schema = db.Schema
+const Schema = mongoose.Schema
 
 const ReviewSchema = new Schema({
   title: {
@@ -33,7 +33,7 @@ const ReviewSchema = new Schema({
   }
 })
 
-const ReviewModel = db.model('review', ReviewSchema)
+const ReviewModel = mongoose.model('review', ReviewSchema)
 
 export default ReviewModel
 export default ReviewSchema

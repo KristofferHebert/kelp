@@ -1,6 +1,7 @@
 'use strict'
 
 import express from 'express'
+import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import passport from 'passport'
 import compression from 'compression'
@@ -18,6 +19,9 @@ const app = express()
 
 // Set public folder
 app.use(express.static(path.join(__dirname, '/public')))
+
+// Config DB Connection
+mongoose.connect('mongodb://localhost/' + config.database)
 
 // Compress all assets
 app.use(compression())

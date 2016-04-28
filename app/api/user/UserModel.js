@@ -1,10 +1,10 @@
 // Some inspiration from http://www.thebuttonfactory.nl/?p=2496
 // Email validation inspired by http://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax
 
-import db from '../db'
+import mongoose from 'mongoose'
 import passportLocalMongoose from 'passport-local-mongoose'
 
-const Schema = db.Schema
+const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
   email: {
@@ -31,6 +31,6 @@ UserSchema.plugin(passportLocalMongoose, {
   usernameField: 'email'
 })
 
-const UserModel = db.model('user', UserSchema)
+const UserModel = mongoose.model('user', UserSchema)
 
 export default UserModel
