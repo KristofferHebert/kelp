@@ -1,7 +1,17 @@
 const ROOT = require('app-root-path').path
+const config = require(ROOT + '/app/config.js').default
+const mongoose = require('mongoose')
 const UserController = require(ROOT + '/app/api/user/usercontroller').default
 
 import assert from 'assert'
+
+before((done) => {
+  mongoose.connect('mongodb://localhost/' + config.database, done)
+})
+
+after((done) => {
+    mongoose.connection.close(done)
+})
 
 describe('Testing User Controller', () => {
   it('Can create user via UserController.post', (done) => {
