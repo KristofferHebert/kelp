@@ -6,14 +6,14 @@ const RestaurantController = {
   get (id) {
     const promise = new Promise((resolve, reject) => {
       if (id) {
-        RestaurantModel.findOne({_id: id}, (err, review) => {
+        RestaurantModel.findOne({_id: id}, (err, restaurant) => {
           if (err) return reject(err)
-          return resolve(review)
+          return resolve(restaurant)
         })
       } else {
-        RestaurantModel.find({}, (err, review) => {
+        RestaurantModel.find({}, (err, restaurant) => {
           if (err) return reject(err)
-          return resolve(review)
+          return resolve(restaurant)
         })
       }
     })

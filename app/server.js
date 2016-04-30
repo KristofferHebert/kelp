@@ -38,6 +38,7 @@ app.set('view engine', '.hbs')
 
 // Adding Middlewares
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(session(config.keys))
 
