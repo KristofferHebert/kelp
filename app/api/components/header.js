@@ -1,8 +1,8 @@
-import 'React' from 'react'
+import React from 'react'
 
 const Header = React.createClass({
-  render(){
-    var Menu = this.props.menu.forEach(item){
+  render () {
+    var Menu = this.props.menu.forEach((item) => {
       return (
         <li className={item.selected ? 'menu-selected' : ''}>
           <a href={item.href}>
@@ -10,15 +10,13 @@ const Header = React.createClass({
           </a>
         </li>
       )
-    }
+    })
     return (
       <nav className={this.props.className}>
-        <ul>{Nav}</ul>
+        <ul>{Menu}</ul>
       </nav>
     )
   }
 })
-
-
 
 export default Header
