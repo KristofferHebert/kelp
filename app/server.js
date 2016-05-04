@@ -13,7 +13,7 @@ import exphbs from 'express-handlebars'
 
 import UserModel from './api/user/usermodel'
 import config from './config'
-import routes from './api/routes'
+import routes from './api/routes/'
 
 const app = express()
 

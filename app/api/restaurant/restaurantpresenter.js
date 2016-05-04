@@ -10,9 +10,8 @@ const RestaurantPresenter = {
   home (req, res) {
     Restaurant.Controller.get()
       .then((results) => {
-        let app = ReactDOMServer.renderToString(<rp data={results} />)
         return res.render('page', {
-          app: app,
+          app: ReactDOMServer.renderToString(<rp data={results} />),
           __initialstate: '{}'
         })
       })

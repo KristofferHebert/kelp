@@ -11,7 +11,7 @@ RestaurantAPIRouter.get('/', (req, res) => {
       res.json(result)
     })
     .catch((err) => {
-      res.status(400).json(err)
+      res.status(404).json(err)
     })
 })
 
@@ -29,7 +29,7 @@ RestaurantAPIRouter.post('/', (req, res) => {
     res.json(result)
   })
   .catch((err) => {
-    res.status(400).json(err)
+    res.status(404).json(err)
   })
 })
 
@@ -40,7 +40,7 @@ RestaurantAPIRouter.get('/:id', (req, res) => {
       res.json(result)
     })
     .catch((err) => {
-      res.status(400).json(err)
+      res.status(404).json(err)
     })
 })
 
@@ -51,7 +51,7 @@ RestaurantAPIRouter.delete('/:id', (req, res) => {
         res.json(result)
       })
       .catch((err) => {
-        res.status(400).json(err)
+        res.status(404).json(err)
       })
 })
 

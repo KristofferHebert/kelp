@@ -1,4 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { Router } from 'react-router'
+import { history } from 'react-router/lib/browser'
+import ClientRoutes from '../components/clientroutes'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+React.render((<Router
+  history={history}>{ClientRoutes}</Router>),
+  document.getElementById('root'))
