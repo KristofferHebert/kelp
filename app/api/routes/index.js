@@ -13,19 +13,11 @@ routes.use('/api/restaurant', RestaurantRouter.RestaurantAPIRouter)
 
 // Pages
 routes.use('/', HomeRouter)
-routes.use('/restaurant', RestaurantRouter.RestaurantClientRouter)
+// routes.use('/restaurant', RestaurantRouter.RestaurantClientRouter)
 
 routes.use('*', (req, res) => {
-  ServerRouter(req.url, (err, props) => {
-    if (err) {
-      res.status(404).send({err})
-    }
-
-    res.render('page', {
-      app: ReactDOMServer.renderToString(<Router props={props} />),
-      __initialstate: '{}'
-    })
-  })
+  console.log(req.baseUrl)
+  ServerRouter(req.baseUrl, {}, res)
 })
 
 export default routes

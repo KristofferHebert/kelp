@@ -6,7 +6,17 @@ import React from 'react'
 import ReactRouter from 'react-router'
 import { Route } from 'react-router'
 
-import RestaurantPage from '../'
+import RestaurantPage from '../restaurant/components/restauranthomepage.js'
+
+const App = React.createClass({
+  render () {
+    return (
+      <div>
+        {this.props.children}
+      </div>
+    )
+  }
+})
 
 const ClientRoutes = (
   <Route path='/'>
