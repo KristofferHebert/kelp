@@ -57,6 +57,9 @@ RestaurantAPIRouter.delete('/:id', (req, res) => {
 
 RestaurantClientRouter.get('/', Restaurant.Presenter.home)
 
+RestaurantClientRouter.get('/r/:id', Restaurant.Presenter.single)
+
+
 const RestaurantRouter = {
   RestaurantAPIRouter,
   RestaurantClientRouter

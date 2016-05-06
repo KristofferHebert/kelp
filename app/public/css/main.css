@@ -1,0 +1,8 @@
+.image-border {
+  padding: 1em;
+  border: 1px solid #ccc;
+}
+
+.image-border img {
+  width: 100%;
+}

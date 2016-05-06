@@ -6,12 +6,36 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css"/>
 </head>
-<script>
-  window.__initialstate = {{{__initialstate}}}
-</script>
 <body>
-  {{{app}}}
-  {{{body}}}
-
+  <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 col-md-offset-2">
+            <a href="/" class="navbar-brand">Kelp</a>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/">Restaurants</a></li>
+            </ul>
+          </div>
+        </div>
+  </nav>
+  <main class="container">
+      <section class="row">
+          <div class="col-md-9 col-md-offset-2">
+            {{{body}}}
+          </div>
+      </section>
+  </main>
+  <footer class="footer">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-md-offset-2">
+              <hr />
+                <p class="text-mute text-center">
+              Kelp 2016
+            </p>
+          </div>
+        </div>
+      </div>
+  </footer>
 </body>
 </html>

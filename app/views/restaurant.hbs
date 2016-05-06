@@ -1,0 +1,17 @@
+<section>
+  <div class="row">
+    <article class="col-md-4">
+      <h1 class='restaurant-header'>{{content.name}}</h1>
+      <span class='restaurantStars'>{{content.stars}}</span>
+      <p class='restaurant-description'>{{content.description}}</p>
+      <hr />
+      <p class='restaurantHours'>{{content.hours}}</p>
+      <address><a href="https://maps.google.com?q={{content.address}}" target="_blank">{{content.address}} ( Directions )</a></address>
+    </article>
+    <aside class="col-md-8 image-border">
+      <img src="{{content.images}}" class="col-md-12" alt="{{content.name}} Featured Picture" title="{{content.name}} Featured Picture"/>
+    </aside>
+  </div>
+  <hr />
+  <h4>Recommended Reviews for {{content.name}}</h4>
+</section>
