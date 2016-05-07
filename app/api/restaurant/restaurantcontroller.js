@@ -11,10 +11,12 @@ const RestaurantController = {
           return resolve(restaurant)
         })
       } else {
-        RestaurantModel.find({}, (err, restaurant) => {
-          if (err) return reject(err)
-          return resolve(restaurant)
-        })
+        RestaurantModel.find({})
+          .populate('reviews')
+          .exec((err, restaurant) => {
+            if (err) return reject(err)
+            return resolve(restaurant)
+          })
       }
     })
 

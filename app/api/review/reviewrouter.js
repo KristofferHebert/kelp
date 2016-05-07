@@ -16,18 +16,13 @@ ReviewRouter.get('/', (req, res) => {
 })
 
 ReviewRouter.post('/', (req, res) => {
-  if (!validator.isNumeric(req.body.stars)) {
-    return res.status(400).json({
-      error: 'Please provide valid stars as number'
-    })
-  }
-
   Review.Controller.post({
     title: req.body.title,
+    owner_name: req.body.owner_name,
     owner_id: req.body.owner_id,
     restaurant_id: req.body.restaurant_id,
     body: req.body.body,
-    stars: req.body.stars
+    stars: parseInt(req.body.stars)
   })
   .then((result) => {
     res.json(result)

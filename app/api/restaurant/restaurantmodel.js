@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import ReviewSchema from '../review/reviewmodel'
+import { ReviewSchema } from '../review/reviewmodel'
 
 const Schema = mongoose.Schema
 

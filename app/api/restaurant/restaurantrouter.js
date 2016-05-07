@@ -21,7 +21,7 @@ RestaurantAPIRouter.post('/', (req, res) => {
     address: req.body.address,
     hours: req.body.hours,
     description: req.body.description,
-    images: req.body.images
+    images: req.body.images,
   }
 
   Restaurant.Controller.post(data)

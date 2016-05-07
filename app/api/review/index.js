@@ -1,5 +1,5 @@
 import ReviewController from './reviewcontroller'
-import ReviewModel from './reviewmodel'
+import { ReviewModel } from './reviewmodel'
 import ReviewPresenter from './reviewpresenter'
 import ReviewRouter from './reviewrouter'
 

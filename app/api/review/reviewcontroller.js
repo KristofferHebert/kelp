@@ -1,4 +1,4 @@
-import ReviewModel from './reviewmodel'
+import { ReviewModel } from './reviewmodel'
 
 const ReviewController = {
 
@@ -23,12 +23,12 @@ const ReviewController = {
 
     // Create Revoew based on data object, returns a promise
   post (data) {
-    const newuser = new ReviewModel(data)
+    const review = new ReviewModel(data)
 
     const promise = new Promise((resolve, reject) => {
-      newuser.save((err, newuser) => {
+      review.save((err, review) => {
         if (err) return reject(err)
-        return resolve(newuser)
+        return resolve(review)
       })
     })
 
