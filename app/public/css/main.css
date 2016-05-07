@@ -6,3 +6,38 @@
 .image-border img {
   width: 100%;
 }
+
+#reviews-mount {
+  background: #FAFAFA;
+}
+
+.review-title {
+  font-size: 1.4em;
+}
+
+.reviewstar-container {
+  display:block;
+  width: 170px;
+  height: 30px;
+  clear:both;
+  float: right;
+}
+
+.review-star {
+  background: url('../images/stars.png') top center no-repeat;
+  display: block;
+  width: 30px;
+  height: 30px;
+  float:left;
+  margin-right: .2em;
+}
+
+.review-star-gray {
+  background: url('../images/stars-gray.png') top center no-repeat;
+}
+
+.review-container {
+  padding: 1em;
+  border-bottom: 1px solid #eee;
+  clear:both;
+}

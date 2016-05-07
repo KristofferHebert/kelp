@@ -6,10 +6,12 @@ const RestaurantController = {
   get (id) {
     const promise = new Promise((resolve, reject) => {
       if (id) {
-        RestaurantModel.findOne({_id: id}, (err, restaurant) => {
-          if (err) return reject(err)
-          return resolve(restaurant)
-        })
+        RestaurantModel.findOne({'_id': id})
+          .populate('reviews')
+          .exec((err, restaurant) => {
+            if (err) return reject(err)
+            return resolve(restaurant)
+          })
       } else {
         RestaurantModel.find({})
           .populate('reviews')
@@ -32,6 +34,22 @@ const RestaurantController = {
         if (err) return reject(err)
         return resolve(newuser)
       })
+    })
+
+    return promise
+  },
+
+  // Update Restaurant based on data object, returns a promise
+  update (id, data) {
+    const promise = new Promise((resolve, reject) => {
+      RestaurantModel.findOne({'_id': id})
+        .populate('reviews')
+        .exec((err, restaurant) => {
+          if (err) return reject(err)
+          restaurant.reviews = restaurant.reviews.concat(data.reviews)
+          restaurant.save()
+          return resolve(restaurant)
+        })
     })
 
     return promise

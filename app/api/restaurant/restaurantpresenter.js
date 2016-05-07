@@ -4,6 +4,9 @@ import ReactDOMServer from 'react-dom/server'
 import Restaurant from './index'
 import RestaurantPage from './components/restauranthomepage'
 
+import ReviewList from '../review/components/reviewlist'
+let Rl = React.createFactory(ReviewList)
+
 const rp = React.createFactory(RestaurantPage)
 
 const RestaurantPresenter = {
@@ -23,7 +26,8 @@ const RestaurantPresenter = {
     Restaurant.Controller.get(id)
       .then((result) => {
         return res.render('restaurant', {
-          content: result
+          content: result,
+          reviews: ReactDOMServer.renderToString(<Rl reviews={result.reviews}/>)
         })
       })
       .catch((err) => {

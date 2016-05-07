@@ -21,7 +21,15 @@ RestaurantAPIRouter.post('/', (req, res) => {
     address: req.body.address,
     hours: req.body.hours,
     description: req.body.description,
-    images: req.body.images,
+    images: req.body.images
+  }
+
+  if (req.body._id) {
+    data._id = req.body._id
+  }
+
+  if (req.body.reviews) {
+    data.reviews = req.body.reviews
   }
 
   Restaurant.Controller.post(data)
@@ -36,6 +44,17 @@ RestaurantAPIRouter.post('/', (req, res) => {
 RestaurantAPIRouter.get('/:id', (req, res) => {
   const id = req.params['id']
   Restaurant.Controller.get(id)
+    .then((result) => {
+      res.json(result)
+    })
+    .catch((err) => {
+      res.status(404).json(err)
+    })
+})
+
+RestaurantAPIRouter.post('/:id', (req, res) => {
+  const id = req.params['id']
+  Restaurant.Controller.update(id, req.body)
     .then((result) => {
       res.json(result)
     })
