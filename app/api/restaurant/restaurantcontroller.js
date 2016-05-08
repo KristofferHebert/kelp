@@ -3,6 +3,23 @@ import RestaurantModel from './restaurantmodel'
 const RestaurantController = {
 
   // Get Restaurant by ID, returns a promise
+  _addReviewStats (restaurant) {
+    let average = 0
+    if (!restaurant.reviews.length) {
+      let sum = restaurant.reviews.reduce((a, b) => {
+        return a.stars + b.stars
+      })
+      average = sum / restaurant.reviews.length
+    }
+
+    let reviewStats = {
+      numberOf: restaurant.reviews.length,
+      average: average
+    }
+    restaurant.reviewStats = reviewStats
+
+    return restaurant
+  },
   get (id) {
     const promise = new Promise((resolve, reject) => {
       if (id) {

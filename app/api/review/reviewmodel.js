@@ -31,7 +31,10 @@ const ReviewSchema = new Schema({
     min: 1,
     required: true
   }
-})
+},
+  {
+    timestamps: true
+  })
 
 const ReviewModel = mongoose.model('review', ReviewSchema)
 

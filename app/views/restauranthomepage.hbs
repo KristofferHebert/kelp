@@ -1,13 +1,17 @@
 
 {{#each content}}
 
-  <article>
-    <a href="/r/{{_id}}"><img src="{{images}}" class="image-border" alt="{{name}} main picture" title="{{name}} main picture"/></a>
-    <h2 class='restaurant-header'><a href="/r/{{_id}}">{{name}}</a></h2>
-    <span class='restaurantStars'>{{stars}}</span>
-    <p class='restaurantHours'>{{hours}}</p>
-    <address><a href="https://maps.google.com?q={{address}}" target="_blank">{{address}} ( Directions )</a></address>
-    <p class='restaurant-description'>{{description}}   <a href="/r/{{_id}}">Learn more</a></p>
+  <article class="restaurant-container row">
+    <div class="col-md-7">
+      <a href="/r/{{_id}}"><img src="{{images}}" class="image-border" alt="{{name}} main picture" title="{{name}} main picture"/></a>
+    </div>
+    <aside class="col-md-4">
+      <h2 class='restaurant-header'><a href="/r/{{_id}}">{{name}}</a></h2>
+      <span class='restaurantStars'>{{stars}}</span>
+      <p class='restaurantHours'>{{hours}}</p>
+      <address><a href="https://maps.google.com?q={{address}}" target="_blank">{{address}} ( Directions )</a></address>
+      <p class='restaurant-description'>{{description}}   <a href="/r/{{_id}}">Learn more</a></p>
+    </aside>
   </article>
 
 {{/each}}

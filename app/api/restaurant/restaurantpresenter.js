@@ -13,6 +13,9 @@ const RestaurantPresenter = {
   home (req, res) {
     Restaurant.Controller.get()
       .then((results) => {
+
+        console.log(results.reviews)
+
         return res.render('restauranthomepage', {
           content: results
         })

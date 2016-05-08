@@ -29,6 +29,17 @@ const RestaurantSchema = new Schema({
     required: true
   },
   reviews: [ ReviewSchema ]
+},
+  {
+    timestamps: true
+  })
+
+RestaurantSchema.set('toJSON', {
+  virtuals: true
+})
+
+RestaurantSchema.set('toObject', {
+  virtuals: true
 })
 
 const RestaurantModel = mongoose.model('restaurant', RestaurantSchema)

@@ -1,14 +1,24 @@
+a:hover {
+  text-decoration: none;
+}
+
+.restaurant-container {
+  padding-bottom: 1.4em;
+  min-height: 20em;
+}
+
 .image-border {
   padding: 1em;
   border: 1px solid #ccc;
 }
 
-.image-border img {
-  width: 100%;
+.image-border:hover {
+  background-color: #ddd;
+  border: 1px solid #ddd;
 }
 
-#reviews-mount {
-  background: #FAFAFA;
+img.image-border, .image-border img{
+  width: 100%;
 }
 
 .review-title {
@@ -16,11 +26,10 @@
 }
 
 .reviewstar-container {
-  display:block;
-  width: 170px;
-  height: 30px;
-  clear:both;
-  float: right;
+  min-height: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 194px;
 }
 
 .review-star {
@@ -40,4 +49,16 @@
   padding: 1em;
   border-bottom: 1px solid #eee;
   clear:both;
+  background: #FAFAFA;
+}
+
+.small {
+  font-size: .8em;
+}
+
+@media screen and (min-width: 60em) {
+  .reviewstar-container {
+    width: 194px;
+    float: right;
+  }
 }
