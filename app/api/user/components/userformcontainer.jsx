@@ -33,19 +33,29 @@ UserFormContainer = React.createClass({
     })
   },
   handleCreateUser (user) {
+    let options = {
+      method: 'POST',
+      body: user
+    }
 
+    this.makeRequest('/api/user', options)
+    .then((response) => {
+      let self = this
+      if (response.error) {
+        this.setState({message: response.error})
+      } else {
+        self.handleLogin(user)
+      }
+    })
   },
   makeRequest,
   getMessage () {
-    if (!this.state.message) {
-      return false
-    }
-
-    return (
+    let message = (
       <section className='message message-error'>
         {this.props.message}
       </section>
     )
+    return this.state.message ? message : false
   },
   render () {
     return (
