@@ -47,4 +47,14 @@ UserRouter.get('/:id', (req, res) => {
         })
 })
 
+UserRouter.post('/login', (req, res) => {
+  User.Controller.login(req.body.email, req.body.password)
+        .then((result) => {
+          res.json(result)
+        })
+        .catch((err) => {
+          res.status(400).json(err)
+        })
+})
+
 export default UserRouter

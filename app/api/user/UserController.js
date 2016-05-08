@@ -47,7 +47,12 @@ const UserController = {
         if (!user) return resolve(null)
         user.authenticate(password, (err, user) => {
           if (err) reject(err)
-          resolve(user)
+
+          let response = user || {
+            error: 'Please provide valid email and password'
+          }
+
+          resolve(response)
         })
       })
       .catch((err) => {
