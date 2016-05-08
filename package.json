@@ -45,6 +45,7 @@
     "passport-local-mongoose": "^4.0.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
-    "validator": "^5.2.0"
+    "validator": "^5.2.0",
+    "whatwg-fetch": "^1.0.0"
   }
 }
