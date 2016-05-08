@@ -1,7 +1,9 @@
 import React from 'react'
 import makeRequest from '../components/util/makerequest'
 
-UserFormContainer = React.createClass({
+import UserForm from './userform'
+
+const UserFormContainer = React.createClass({
   setInitialState () {
     return {
       isLoggedIn: this.props.isLoggedIn || false,
