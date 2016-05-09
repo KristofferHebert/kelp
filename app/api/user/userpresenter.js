@@ -8,9 +8,9 @@ let ufc = React.createFactory(UserFormContainer)
 const UserPresenter = {
   login (req, res) {
     res.render('page', {
-      content: ReactDOMServer.renderToString(<UserFormContainer isLoggedIn={false} loginHeader={false}/>),
+      content: ReactDOMServer.renderToString(<ufc isLoggedIn={false} loginHeader={false}/>),
       mount: 'userform-mount',
-      script: 'userform.js'
+      script: 'userform.min.js'
     })
   }
 }

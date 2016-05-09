@@ -19,6 +19,8 @@ const UserFormContainer = React.createClass({
     e.preventDefault()
     let form = this.state.form
     form[e.target.name] = e.target.value
+    console.log(form)
+
     this.setState(form)
   },
   handleSubmit (e) {
