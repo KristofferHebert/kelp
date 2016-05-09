@@ -5,17 +5,14 @@ import Restaurant from './index'
 import RestaurantPage from './components/restauranthomepage'
 
 import ReviewList from '../review/components/reviewlist'
-let Rl = React.createFactory(ReviewList)
 
+let Rl = React.createFactory(ReviewList)
 const rp = React.createFactory(RestaurantPage)
 
 const RestaurantPresenter = {
   home (req, res) {
     Restaurant.Controller.get()
       .then((results) => {
-
-        console.log(results.reviews)
-
         return res.render('restauranthomepage', {
           content: results
         })

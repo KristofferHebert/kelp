@@ -1,1 +1,7 @@
-{{ message }}
+{{#if mount}}
+  <div id={{mount}}>
+{{/if}}
+    {{{ content }}}
+{{#if mount}}
+  </div>
+{{/if}}

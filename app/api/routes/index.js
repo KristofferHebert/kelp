@@ -6,11 +6,12 @@ import RestaurantRouter from '../restaurant/restaurantrouter'
 import ServerRouter from './serverrouter'
 
 const routes = express.Router()
-routes.use('/api/user', UserRouter)
+routes.use('/api/user', UserRouter.UserAPIRouter)
 routes.use('/api/review', ReviewRouter)
 routes.use('/api/restaurant', RestaurantRouter.RestaurantAPIRouter)
 
 // Pages
 routes.use('/', RestaurantRouter.RestaurantClientRouter)
+routes.use('/user', UserRouter.UserClientRouter)
 
 export default routes

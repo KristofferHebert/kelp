@@ -3,9 +3,10 @@ import validator from 'validator'
 
 import User from './'
 
-let UserRouter = express.Router()
+let UserAPIRouter = express.Router()
+let UserClientRouter = express.Router()
 
-UserRouter.get('/', (req, res) => {
+UserAPIRouter.get('/', (req, res) => {
   User.Controller.get()
       .then((result) => {
         res.json(result)
@@ -15,7 +16,7 @@ UserRouter.get('/', (req, res) => {
       })
 })
 
-UserRouter.post('/', (req, res) => {
+UserAPIRouter.post('/', (req, res) => {
   if (!req.body.email) {
     return res.status(400).json({
       error: 'Please provide email'
@@ -37,7 +38,7 @@ UserRouter.post('/', (req, res) => {
     })
 })
 
-UserRouter.get('/:id', (req, res) => {
+UserAPIRouter.get('/:id', (req, res) => {
   User.Controller.get(req.params['id'])
         .then((result) => {
           res.json(result)
@@ -47,7 +48,7 @@ UserRouter.get('/:id', (req, res) => {
         })
 })
 
-UserRouter.post('/login', (req, res) => {
+UserAPIRouter.post('/login', (req, res) => {
   User.Controller.login(req.body.email, req.body.password)
         .then((result) => {
           res.json(result)
@@ -56,5 +57,12 @@ UserRouter.post('/login', (req, res) => {
           res.status(400).json(err)
         })
 })
+
+UserClientRouter.get('/login', User.Presenter.login)
+
+const UserRouter = {
+  UserClientRouter,
+  UserAPIRouter
+}
 
 export default UserRouter
