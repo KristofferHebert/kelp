@@ -70,6 +70,7 @@ const UserFormContainer = React.createClass({
         <UserForm className='form form-user'
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          loginHeader={this.state.loginHeader}
           form={this.state.form}
           />
         {this.getMessage()}

@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 
-import UserFormContainer from './components/userformcontainer'
+import UFContainer from './components/userformcontainer'
 
-let ufc = React.createFactory(UserFormContainer)
+const UserFormContainer = React.createFactory(UFContainer)
 
 const UserPresenter = {
   login (req, res) {
     res.render('page', {
-      content: ReactDOMServer.renderToString(<ufc isLoggedIn={false} loginHeader={false}/>),
+      content: ReactDOMServer.renderToString(<UserFormContainer isLoggedIn={false} showCreateAccount={false} />),
       mount: 'userform-mount',
       script: 'userform.min.js'
     })
