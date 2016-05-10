@@ -12,12 +12,14 @@ function makeRequest (endpoint, userOptions) {
   if (options.method === 'get' || options.method === 'GET') {
     delete options.body
   }
-
   return fetch(endpoint, options)
-  .then(response => {
-    return response.json().then(text => {
-      return response.ok ? text : Promise.reject(text)
-    })
+  .then(function (response) {
+    return response.text()
+  }).then(function (json) {
+    console.log('parsed json', json)
+    return json
+  }).catch(function (ex) {
+    console.log('parsing failed', ex)
   })
 }
 

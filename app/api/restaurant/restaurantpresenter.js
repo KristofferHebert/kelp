@@ -11,6 +11,7 @@ const rp = React.createFactory(RestaurantPage)
 
 const RestaurantPresenter = {
   home (req, res) {
+    console.log(req)
     Restaurant.Controller.get()
       .then((results) => {
         return res.render('restauranthomepage', {

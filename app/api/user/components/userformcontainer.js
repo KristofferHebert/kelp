@@ -7,6 +7,7 @@ const UserFormContainer = React.createClass({
   getInitialState () {
     return {
       isLoggedIn: this.props.isLoggedIn || false,
+      submitvalue: this.props.showCreateAccount ? 'Sign Up' : 'Submit',
       loginHeader: this.props.showCreateAccount ? 'Create Account' : 'Login',
       form: {
         email: '',
@@ -19,40 +20,50 @@ const UserFormContainer = React.createClass({
     e.preventDefault()
     let form = this.state.form
     form[e.target.name] = e.target.value
-    console.log(form)
-
     this.setState(form)
   },
   handleSubmit (e) {
     e.preventDefault()
+    let handleSubmit = (this.props.showCreateAccount) ? this.handleCreateUser : this.handleLogin
+    handleSubmit(this.state.form)
   },
   handleLogin (user) {
     let options = {
       method: 'POST',
-      body: user
+      body: JSON.stringify(user),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
     }
 
     this.makeRequest('/api/user/login', options)
     .then((response) => {
-      if (response.error) {
-        this.setState({message: response.error})
-      }
+      console.log('login', response, options)
+    })
+    .catch((err) => {
+      console.log(err)
     })
   },
   handleCreateUser (user) {
     let options = {
       method: 'POST',
-      body: user
+      body: JSON.stringify(user),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
     }
 
     this.makeRequest('/api/user', options)
     .then((response) => {
       let self = this
-      if (response.error) {
-        this.setState({message: response.error})
-      } else {
-        self.handleLogin(user)
-      }
+
+      console.log(response)
+      self.handleLogin(user)
+    })
+    .catch((err) => {
+      console.log(err)
     })
   },
   makeRequest,
@@ -66,12 +77,13 @@ const UserFormContainer = React.createClass({
   },
   render () {
     return (
-      <div>
-        <UserForm className='form form-user'
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
+      <div className='row'>
+        <UserForm className='form form-user col-md-6 col-md-offset-3'
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
           loginHeader={this.state.loginHeader}
           form={this.state.form}
+          submitvalue={this.state.submitvalue}
           />
         {this.getMessage()}
       </div>

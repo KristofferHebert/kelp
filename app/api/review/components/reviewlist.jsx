@@ -8,11 +8,11 @@ let ReviewsList = React.createClass({
       let i = -1
       let ii = -1
       while (++i < review.stars) {
-        stars.push((<span className='review-star'></span>))
+        stars.push((<span className='review-star' key={'b' + i}></span>))
       }
 
       while (++ii < max) {
-        stars.push((<span className='review-star review-star-gray'></span>))
+        stars.push((<span className='review-star review-star-gray' key={'a' + ii}></span>))
       }
 
       var time = new Date(Date.parse(review.createdAt)).toDateString()

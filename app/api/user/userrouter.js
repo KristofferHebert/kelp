@@ -51,7 +51,8 @@ UserAPIRouter.get('/:id', (req, res) => {
 UserAPIRouter.post('/login', (req, res) => {
   User.Controller.login(req.body.email, req.body.password)
         .then((result) => {
-          res.json(result)
+          res.cookie('userid', result._id, { maxAge: 2592000000 })
+          res.redirect('/')
         })
         .catch((err) => {
           res.status(400).json(err)
@@ -59,6 +60,13 @@ UserAPIRouter.post('/login', (req, res) => {
 })
 
 UserClientRouter.get('/login', User.Presenter.login)
+
+UserClientRouter.get('/signup', User.Presenter.signup)
+
+UserClientRouter.get('/signout', (req, res) => {
+  req.logout()
+  res.redirect('/')
+})
 
 const UserRouter = {
   UserClientRouter,

@@ -12,6 +12,13 @@ const UserPresenter = {
       mount: 'userform-mount',
       script: 'userform.min.js'
     })
+  },
+  signup (req, res) {
+    res.render('page', {
+      content: ReactDOMServer.renderToString(<UserFormContainer isLoggedIn={false} showCreateAccount={true} />),
+      mount: 'userform-mount',
+      script: 'userform.min.js'
+    })
   }
 }
 

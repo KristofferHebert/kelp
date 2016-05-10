@@ -15,6 +15,7 @@ module.exports = {
     path: root + '/app/public/js/',
     filename: '[name].min.js'
   },
+  devtools: 'eval',
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM'
