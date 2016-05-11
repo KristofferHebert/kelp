@@ -1,9 +1,8 @@
 import React from 'react'
 
 const ReviewForm = React.createClass({
-  setInitialState () {
+  getInitialState () {
     return {
-      trim: true,
       title: '',
       owner_id: '',
       restaurant_id: '',
@@ -21,19 +20,26 @@ const ReviewForm = React.createClass({
   },
   render () {
     return (
-      <form {...this.props}>
-        <label for='title'>
-          <input name='title' type='text' value={this.state.title} placeholder='Title' onChange={this.handleChange} required/>
-        </label>
-        <label for='title'>
-          <input name='stars' type='number' value={this.state.stars} placeholder='Stars' onChange={this.handleChange} min='1' max='5' required/>
-        </label>
-        <label for='body'>
-          <textarea name='body' placeholder='Body' onChange={this.handleChange} required>
-            {this.state.body}
-          </textarea>
-        </label>
-        <input name='submit' type='submit' />
+      <form className=''>
+        <fieldset className='form-inline'>
+          <label htmlFor='title' hidden>Title:</label>
+            <input name='title' type='text' value={this.state.title} placeholder='Title' onChange={this.handleChange} className='form-control' required/>
+          <label htmlFor='stars'>Rating:</label>
+          <select class='form-control' name='stars' selected='1' value={this.state.stars} placeholder='Stars' onChange={this.handleChange} className='form-control'>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </fieldset>
+        <fieldset className='form-group'>
+          <label htmlFor='message' hidden>Message</label>
+            <textarea name='Message' placeholder='Message' onChange={this.handleChange} className='form-control' rows='3'required>
+              {this.state.body}
+            </textarea>
+        </fieldset>
+        <input name='submit' type='submit' className='btn btn-primary btn-block' />
       </form>
       ) }
 })

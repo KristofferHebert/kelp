@@ -7,17 +7,22 @@ const UserFormContainer = React.createFactory(UFContainer)
 
 const UserPresenter = {
   login (req, res) {
+    let __data = {isLoggedIn: false, showCreateAccount: false}
     res.render('page', {
-      content: ReactDOMServer.renderToString(<UserFormContainer isLoggedIn={false} showCreateAccount={false} />),
+      content: ReactDOMServer.renderToString(UserFormContainer(__data)),
       mount: 'userform-mount',
-      script: 'userform.min.js'
+      script: 'userform.min.js',
+      __data: __data
     })
   },
   signup (req, res) {
+    let __data = {isLoggedIn: false, showCreateAccount: true}
+
     res.render('page', {
-      content: ReactDOMServer.renderToString(<UserFormContainer isLoggedIn={false} showCreateAccount={true} />),
+      content: ReactDOMServer.renderToString(UserFormContainer(__data)),
       mount: 'userform-mount',
-      script: 'userform.min.js'
+      script: 'userform.min.js',
+      __data: __data
     })
   }
 }

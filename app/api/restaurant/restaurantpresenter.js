@@ -11,7 +11,6 @@ const rp = React.createFactory(RestaurantPage)
 
 const RestaurantPresenter = {
   home (req, res) {
-    console.log(req)
     Restaurant.Controller.get()
       .then((results) => {
         return res.render('restauranthomepage', {
@@ -28,7 +27,7 @@ const RestaurantPresenter = {
       .then((result) => {
         return res.render('restaurant', {
           content: result,
-          reviews: ReactDOMServer.renderToString(<Rl reviews={result.reviews}/>)
+          reviews: ReactDOMServer.renderToString(Rl({reviews: result.reviews}))
         })
       })
       .catch((err) => {

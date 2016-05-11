@@ -26,12 +26,24 @@ mongoose.connect('mongodb://localhost/' + config.database)
 // Compress all assets
 app.use(compression())
 
-// Adding Templating Engine
-app.engine('.hbs', exphbs({
+// Configure Handlebars
+const hbs = exphbs.create({
   extname: '.hbs',
   defaultLayout: 'main',
-  layoutsDir: path.join(__dirname, '/views/layouts')
-}))
+  layoutsDir: path.join(__dirname, '/views/layouts'),
+  helpers: {
+    safeString: function (object) {
+      return JSON.stringify(object)
+    }
+  }
+})
+
+// exphbs.registerHelper('safeString', function (object) {
+//   return new exphbs.SafeString(object)
+// })
+
+// Adding Templating Engine
+app.engine('.hbs', hbs.engine)
 
 app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', '.hbs')

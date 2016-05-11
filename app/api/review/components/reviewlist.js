@@ -1,4 +1,5 @@
 import React from 'react'
+import ReviewForm from './reviewform'
 
 let ReviewsList = React.createClass({
   render () {
@@ -35,7 +36,9 @@ let ReviewsList = React.createClass({
 
     return (
         <section>
-           {Reviews}
+          {Reviews}
+          <h4>Add Review</h4>
+          <ReviewForm />
         </section>
      )
   }

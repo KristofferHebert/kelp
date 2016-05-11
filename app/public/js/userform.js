@@ -1,6 +1,8 @@
 'use strict'
 
-import UserFormContainer from '../../api/user/components/userformcontainer.js'
+import __UserFormContainer__ from '../../api/user/components/userformcontainer.js'
 
-ReactDOM.render(<UserFormContainer isLoggedIn={false} showCreateAccount={false} />,
+// global __data
+const UserFormContainer = React.createFactory(__UserFormContainer__)
+ReactDOM.render(UserFormContainer(__data),
 document.getElementById('userform-mount'))
