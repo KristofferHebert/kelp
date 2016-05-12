@@ -9,7 +9,8 @@ console.log(root)
 
 module.exports = {
   entry: {
-    userform: root + '/app/public/js/userform'
+    userform: root + '/app/public/js/userform',
+    signout: root + '/app/public/js/signout'
   },
   output: {
     path: root + '/app/public/js/',
@@ -34,6 +35,6 @@ module.exports = {
     noParse: ['react']
   },
   plugins: [
-    new CommonsChunkPlugin('common.min.js', ['userform'])
+    new CommonsChunkPlugin('common.min.js', ['userform', 'signout'])
   ]
 }

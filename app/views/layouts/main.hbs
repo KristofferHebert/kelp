@@ -15,8 +15,7 @@
             <a href="/" class="navbar-brand">Kelp</a>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="/">Restaurants</a></li>
-              <li><a href="/user/login">Login</a></li>
-              <li class="active"><a href="/user/signout" class="strong">Sign Out</a></li>
+              <li class="active" id="signout-mount"></li>
             </ul>
           </div>
         </div>
@@ -30,10 +29,12 @@
   </main>
   <script src="//cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react.js" charset="utf-8"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom.js" charset="utf-8"></script>
+  <script src="/js/common.min.js" charset="utf-8"></script>
   {{#if script}}
-    <script src="/js/common.min.js" charset="utf-8"></script>
     <script src="/js/{{script}}" charset="utf-8" defer></script>
   {{/if}}
+  <script src="/js/signout.min.js" charset="utf-8" defer></script>
+
   <footer class="footer">
       <div class="container">
         <div class="row">

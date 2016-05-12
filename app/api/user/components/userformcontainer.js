@@ -1,6 +1,6 @@
 import React from 'react'
 import makeRequest from '../../components/util/makerequest'
-import Auth from '../../components/util/auth.js'
+import Auth from '../../components/util/auth'
 
 import UserForm from './userform'
 
@@ -49,6 +49,7 @@ const UserFormContainer = React.createClass({
           _id: res._id,
           email: res.email
         })
+        window.location = '/'
       }
     })
     .catch((err) => {
@@ -70,7 +71,12 @@ const UserFormContainer = React.createClass({
       let self = this
 
       console.log(response)
-      self.handleLogin(user)
+
+      if (response.error) {
+        self.setState({ message: response.error })
+      } else {
+        self.handleLogin(user)
+      }
     })
     .catch((err) => {
       console.log(err)
