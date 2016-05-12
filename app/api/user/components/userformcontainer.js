@@ -1,5 +1,6 @@
 import React from 'react'
 import makeRequest from '../../components/util/makerequest'
+import Auth from '../../components/util/auth.js'
 
 import UserForm from './userform'
 
@@ -28,6 +29,7 @@ const UserFormContainer = React.createClass({
     handleSubmit(this.state.form)
   },
   handleLogin (user) {
+    const self = this
     let options = {
       method: 'POST',
       body: JSON.stringify(user),
@@ -39,7 +41,15 @@ const UserFormContainer = React.createClass({
 
     this.makeRequest('/api/user/login', options)
     .then((response) => {
-      console.log('login', response, options)
+      if (response.error) {
+        self.setState({ message: response.error })
+      } else {
+        let res = JSON.parse(response)
+        Auth.setUser({
+          _id: res._id,
+          email: res.email
+        })
+      }
     })
     .catch((err) => {
       console.log(err)

@@ -51,8 +51,7 @@ UserAPIRouter.get('/:id', (req, res) => {
 UserAPIRouter.post('/login', (req, res) => {
   User.Controller.login(req.body.email, req.body.password)
         .then((result) => {
-          res.cookie('userid', result._id, { maxAge: 2592000000 })
-          res.redirect('/')
+          return res.json(result)
         })
         .catch((err) => {
           res.status(400).json(err)
