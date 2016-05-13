@@ -14,7 +14,7 @@ function makeRequest (endpoint, userOptions) {
   }
   return fetch(endpoint, options)
   .then(function (response) {
-    return response.text()
+    return response.json()
   }).then(function (json) {
     return json
   }).catch(function (ex) {

@@ -44,10 +44,10 @@ const UserFormContainer = React.createClass({
       if (response.error) {
         self.setState({ message: response.error })
       } else {
-        let res = JSON.parse(response)
+
         Auth.setUser({
-          _id: res._id,
-          email: res.email
+          _id: response._id,
+          email: response.email
         })
         window.location = '/'
       }
