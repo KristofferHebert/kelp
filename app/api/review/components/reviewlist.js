@@ -3,6 +3,8 @@ import ReviewForm from './reviewform'
 
 let ReviewsList = React.createClass({
   render () {
+    let rv = this.props.reviews || __data.reviews
+
     let Reviews = this.props.reviews.map(function (review, index) {
       let stars = []
       let max = 5 - review.stars
@@ -37,7 +39,6 @@ let ReviewsList = React.createClass({
     return (
         <section>
           {Reviews}
-          <h4>Add Review</h4>
           <ReviewForm />
         </section>
      )

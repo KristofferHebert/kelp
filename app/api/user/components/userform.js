@@ -6,7 +6,7 @@ const UserForm = React.createClass({
       <form onSubmit={this.props.onSubmit} className={this.props.className}>
         <h3 className='text-center'>{this.props.loginHeader}</h3>
           <div className='form-group'>
-            <label htmlFor='email' className='col-md-12'> Email </label>
+            <label htmlFor='email'> Email </label>
               <input name='email' type='email' placeholder='Your Email'
                 value={this.props.form.email}
                 onChange={this.props.onChange}
@@ -15,7 +15,7 @@ const UserForm = React.createClass({
                 autoFocus={true}/>
           </div>
           <div className='form-group'>
-            <label htmlFor='password' className='col-md-12'> Password </label>
+            <label htmlFor='password'> Password </label>
               <input name='password' type='password'
                 placeholder='Password'
                 value={this.props.form.password}

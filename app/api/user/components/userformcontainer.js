@@ -94,7 +94,7 @@ const UserFormContainer = React.createClass({
   render () {
     return (
       <div className='row'>
-        <UserForm className='form form-user col-md-6 col-md-offset-3'
+        <UserForm className='form form-user col-sm-6 col-md-offset-3'
           onChange={this.handleChange}
           onSubmit={this.handleSubmit}
           loginHeader={this.state.loginHeader}

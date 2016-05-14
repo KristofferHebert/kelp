@@ -25,9 +25,15 @@ const RestaurantPresenter = {
     let id = req.params['id']
     Restaurant.Controller.get(id)
       .then((result) => {
+
+        const __data = {reviews: result.reviews, restaurant_id: id}
+
         return res.render('restaurant', {
           content: result,
-          reviews: ReactDOMServer.renderToString(Rl({reviews: result.reviews}))
+          __data: __data,
+          reviews: ReactDOMServer.renderToStaticMarkup(Rl(__data)),
+          mount: 'reviews-mount',
+          script: 'reviewform.min.js'
         })
       })
       .catch((err) => {
