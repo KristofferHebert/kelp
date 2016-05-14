@@ -67,6 +67,14 @@ img.image-border, .image-border img{
   margin-right: 1em;
 }
 
+.mb {
+  margin-bottom: 1em;
+}
+
+.mt {
+  margin-top: 1em;
+}
+
 @media screen and (min-width: 60em) {
   .reviewstar-container {
     width: 194px;

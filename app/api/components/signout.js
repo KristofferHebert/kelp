@@ -6,7 +6,7 @@ const SignOut = React.createClass({
   _signOut (e) {
     e.preventDefault()
     Auth.logoutUser()
-    this.forceUpdate()
+    window.location = window.location
   },
   renderSignOutLink () {
     return (

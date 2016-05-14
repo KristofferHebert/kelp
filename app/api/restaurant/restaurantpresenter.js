@@ -6,7 +6,7 @@ import RestaurantPage from './components/restauranthomepage'
 
 import ReviewList from '../review/components/reviewlist'
 
-let Rl = React.createFactory(ReviewList)
+const Rl = React.createFactory(ReviewList)
 const rp = React.createFactory(RestaurantPage)
 
 const RestaurantPresenter = {
@@ -25,15 +25,14 @@ const RestaurantPresenter = {
     let id = req.params['id']
     Restaurant.Controller.get(id)
       .then((result) => {
-
         const __data = {reviews: result.reviews, restaurant_id: id}
-
+        const reviews = ReactDOMServer.renderToStaticMarkup(Rl(__data))
         return res.render('restaurant', {
           content: result,
           __data: __data,
-          reviews: ReactDOMServer.renderToStaticMarkup(Rl(__data)),
+          reviews: reviews,
           mount: 'reviews-mount',
-          script: 'reviewform.min.js'
+          script: 'reviewlist.min.js'
         })
       })
       .catch((err) => {

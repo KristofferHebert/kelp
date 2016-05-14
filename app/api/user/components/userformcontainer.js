@@ -1,10 +1,13 @@
 import React from 'react'
 import makeRequest from '../../components/util/makerequest'
-import Auth from '../../components/util/auth'
+import getMessage from '../../components/util/getmessage'
 
+import Auth from '../../components/util/auth'
 import UserForm from './userform'
 
 const UserFormContainer = React.createClass({
+  makeRequest,
+  getMessage,
   getInitialState () {
     return {
       isLoggedIn: this.props.isLoggedIn || false,
@@ -44,7 +47,6 @@ const UserFormContainer = React.createClass({
       if (response.error) {
         self.setState({ message: response.error })
       } else {
-
         Auth.setUser({
           _id: response._id,
           email: response.email
@@ -82,15 +84,6 @@ const UserFormContainer = React.createClass({
       console.log(err)
     })
   },
-  makeRequest,
-  getMessage () {
-    let message = (
-      <section className='message message-error'>
-        {this.state.message}
-      </section>
-    )
-    return this.state.message ? message : false
-  },
   render () {
     return (
       <div className='row'>
@@ -101,7 +94,6 @@ const UserFormContainer = React.createClass({
           form={this.state.form}
           submitvalue={this.state.submitvalue}
           />
-        {this.getMessage()}
       </div>
     )
   }
