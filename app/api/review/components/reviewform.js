@@ -29,8 +29,8 @@ const ReviewForm = React.createClass({
   },
   renderCreateOrLogin () {
     return (
-      <section>
-        <p>Please <a href='/user/login'>Login</a> or <a href='/user/signup'>create an account</a>.</p>
+      <section className='padding bg-info text-center'>
+        <p>Please <a href='/user/login' className='btn btn-primary'>Login</a> or <a href='/user/signup' className='btn btn-primary'>Create Account</a></p>
       </section>
     )
   },
@@ -41,7 +41,7 @@ const ReviewForm = React.createClass({
     return (
       <section id='restaurantform-mount' className='mt'>
         {this.showForm()}
-        {this.getMessage()}
+        {this.getMessage(this.props.message)}
       </section>
     )
   }

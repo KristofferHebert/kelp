@@ -44,13 +44,14 @@ const UserController = {
     const promise = new Promise((resolve, reject) => {
       this.getUserByEmail(email)
       .then((user) => {
-        if (!user) return resolve(null)
+        const errorMessage = {
+          error: 'Please provide valid email and password'
+        }
+        if (!user) return resolve(errorMessage)
         user.authenticate(password, (err, user) => {
           if (err) reject(err)
 
-          let response = user || {
-            error: 'Please provide valid email and password'
-          }
+          let response = user || errorMessage
 
           resolve(response)
         })

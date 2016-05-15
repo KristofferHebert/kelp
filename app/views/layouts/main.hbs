@@ -7,20 +7,21 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css"/>
 </head>
+<!-- ARIA roles based on http://mcdlr.com/wai-aria-cheatsheet -->
 <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default" role="banner">
       <div class="container">
         <div class="row">
           <div class="col-md-9 col-md-offset-2">
             <a href="/" class="navbar-brand">Kelp</a>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" role="navigation">
               <li><a href="/">Restaurants</a></li>
               <li class="active" id="signout-mount"></li>
             </ul>
           </div>
         </div>
   </nav>
-  <main class="container">
+  <main class="container" role="main">
       <section class="row">
           <div class="col-md-9 col-md-offset-2">
             {{{body}}}
@@ -35,7 +36,7 @@
   {{/if}}
   <script src="/js/signout.min.js" charset="utf-8" defer></script>
 
-  <footer class="footer">
+  <footer class="footer" role="footer">
       <div class="container">
         <div class="row">
             <div class="col-md-9 col-md-offset-2">

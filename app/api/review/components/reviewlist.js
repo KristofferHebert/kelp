@@ -1,6 +1,8 @@
 import React from 'react'
 import Auth from '../../components/util/auth'
 import makeRequest from '../../components/util/makerequest'
+
+import generateStars from './generateStars'
 import ReviewForm from './reviewform'
 
 let ReviewsList = React.createClass({
@@ -11,9 +13,10 @@ let ReviewsList = React.createClass({
       newReview: {
         title: '',
         owner_id: '',
+        owner_name: '',
         restaurant_id: this.props.restaurant_id,
         body: '',
-        stars: ''
+        stars: '1'
       },
       message: false
     }
@@ -29,12 +32,14 @@ let ReviewsList = React.createClass({
       }
     }
 
-    this.makeRequest('/api/user/login', options)
+    let endpoint = '/api/restaurant/' + this.state.newReview.restaurant_id
+
+    this.makeRequest(endpoint, options)
     .then((response) => {
       if (response.error) {
         self.setState({ message: response.error })
       } else {
-        console.log(response)
+        window.location = window.location
       }
     })
     .catch((err) => {
@@ -46,6 +51,7 @@ let ReviewsList = React.createClass({
     if (user) {
       const newReview = this.state.newReview
       newReview.owner_id = user._id
+      newReview.owner_name = user.email
 
       this.setState({
         isLoggedIn: true,
@@ -55,7 +61,7 @@ let ReviewsList = React.createClass({
   },
   handleSubmit (e) {
     e.preventDefault()
-    console.log(this.state.newReview)
+    this.submitNewReview({'reviews': [this.state.newReview]})
   },
   handleChange (e) {
     e.preventDefault()
@@ -64,23 +70,11 @@ let ReviewsList = React.createClass({
     updatedState[name] = e.target.value
     this.setState(updatedState)
   },
+  generateStars,
   render () {
-    let rv = this.props.reviews
-    let Reviews = rv.map(function (review, index) {
-      let stars = []
-      let max = 5 - review.stars
-      let i = -1
-      let ii = -1
-      while (++i < review.stars) {
-        stars.push((<span className='review-star' key={'b' + i}></span>))
-      }
-
-      while (++ii < max) {
-        stars.push((<span className='review-star review-star-gray' key={'a' + ii}></span>))
-      }
-
+    let self = this
+    let Reviews = this.props.reviews.map(function (review, index) {
       var time = new Date(Date.parse(review.createdAt)).toDateString()
-
       return (
           <article className='review-container' key={index}>
             <div className='row'>
@@ -89,8 +83,8 @@ let ReviewsList = React.createClass({
                 <p>{review.body}</p>
               </div>
               <aside className='col-md-4 reviewstar-container'>
-                {stars}
-                <span className='review-owner-name'>{'By ' + review.owner_name}<br />on {time}</span>
+                {self.generateStars([self.props.reviews[index]])}
+                <div className='review-owner-name cb'>{'By ' + review.owner_name}<br />on {time}</div>
               </aside>
             </div>
           </article>

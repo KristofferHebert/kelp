@@ -71,9 +71,6 @@ const UserFormContainer = React.createClass({
     this.makeRequest('/api/user', options)
     .then((response) => {
       let self = this
-
-      console.log(response)
-
       if (response.error) {
         self.setState({ message: response.error })
       } else {
@@ -93,6 +90,8 @@ const UserFormContainer = React.createClass({
           loginHeader={this.state.loginHeader}
           form={this.state.form}
           submitvalue={this.state.submitvalue}
+          showCreateAccount={this.props.showCreateAccount}
+          message={this.state.message}
           />
       </div>
     )

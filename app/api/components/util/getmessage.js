@@ -1,12 +1,14 @@
 import React from 'react'
 
-function getMessage () {
-  let message = (
-    <section className='message message-error'>
-      {this.props.message}
+function getMessage (message) {
+  let messageState = message
+
+  let MessageContainer = (
+    <section className='padding text-center text-warning bg-danger'>
+      {message}
     </section>
   )
-  return this.props.message ? message : false
+  return message ? MessageContainer : false
 }
 
 export default getMessage

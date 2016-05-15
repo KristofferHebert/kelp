@@ -32,7 +32,6 @@ img.image-border, .image-border img{
   min-height: 30px;
   margin-top: 20px;
   margin-bottom: 10px;
-  width: 194px;
 }
 
 .review-star {
@@ -75,9 +74,16 @@ img.image-border, .image-border img{
   margin-top: 1em;
 }
 
+.padding {
+  padding: 1em;
+}
+
+.cb {
+  clear: both;
+}
+
 @media screen and (min-width: 60em) {
   .reviewstar-container {
-    width: 194px;
     float: right;
   }
 }

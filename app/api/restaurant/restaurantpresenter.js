@@ -13,11 +13,17 @@ const RestaurantPresenter = {
   home (req, res) {
     Restaurant.Controller.get()
       .then((results) => {
-        return res.render('restauranthomepage', {
-          content: results
+        const __data = { data: results }
+        const restaurant = ReactDOMServer.renderToStaticMarkup(rp(__data))
+        return res.render('page', {
+          content: restaurant,
+          __data: __data,
+          mount: 'restaurant-mount',
+          script: 'restauranthomepage.min.js'
         })
       })
       .catch((err) => {
+        console.log(err)
         res.send(err)
       })
   },
@@ -36,6 +42,7 @@ const RestaurantPresenter = {
         })
       })
       .catch((err) => {
+        console.log(err)
         res.send(err)
       })
   }
