@@ -1,6 +1,16 @@
 import React from 'react'
 
 const RestaurantPage = React.createClass({
+  handleSort (e) {
+    e.preventDefault()
+    let value = e.target.value
+    console.log(value)
+    if (value === 'newest') {
+      window.location = '/'
+    } else {
+      window.location = window.location + '?sort=' + value
+    }
+  },
   getAverageReviews (reviews) {
     if (reviews.length === 0) {
       return 0
@@ -22,7 +32,7 @@ const RestaurantPage = React.createClass({
       var reviewsLength = restaurant.reviews.length
       var restaurantStars = 'restaurant-stars restaurant-stars-' + reviewsLength
       return (
-        <article className='restaurant-container row' key={'' + i}>
+        <article className='restaurant-container row' key={'abc' + i}>
           <div className='col-md-7'>
             <a href={'/r/' + restaurant._id}><img src={restaurant.images} className='image-border' alt={restaurant.name + ' main picture'} title={restaurant.name + ' main picture'}/></a>
           </div>
@@ -39,7 +49,16 @@ const RestaurantPage = React.createClass({
 
     return (
         <section>
-          <h2>Restaurants</h2>
+          <div className='bg-success padding mb bg-info row'>
+          <form className='form-inline pull-right' role='form'>
+            <label forHtml='sort' className='mr'>Sort By: </label>
+            <select name='sort' onChange={this.handleSort} className='form-control'>
+              <option selected>Select Option</option>
+              <option value='newest'>Newest Restaurant</option>
+              <option value='name'>Name of Restaurant</option>
+            </select>
+          </form>
+          </div>
           <ul>
             {RestaurantPageContent}
           </ul>

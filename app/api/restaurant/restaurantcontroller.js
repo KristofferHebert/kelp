@@ -20,7 +20,7 @@ const RestaurantController = {
 
     return restaurant
   },
-  get (id) {
+  get (id, sort) {
     const promise = new Promise((resolve, reject) => {
       if (id) {
         RestaurantModel.findOne({'_id': id})
@@ -30,7 +30,8 @@ const RestaurantController = {
             return resolve(restaurant)
           })
       } else {
-        RestaurantModel.find({})
+        let query = sort || null
+        RestaurantModel.find({}, null, query)
           .populate('reviews')
           .exec((err, restaurant) => {
             if (err) return reject(err)

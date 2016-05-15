@@ -11,7 +11,15 @@ const rp = React.createFactory(RestaurantPage)
 
 const RestaurantPresenter = {
   home (req, res) {
-    Restaurant.Controller.get()
+
+    let q = req.query.sort
+    let sort = {sort: {}}
+
+    if (q) {
+      sort.sort[q] = 1
+    }
+
+    Restaurant.Controller.get(null, sort)
       .then((results) => {
         const __data = { data: results }
         const restaurant = ReactDOMServer.renderToStaticMarkup(rp(__data))
