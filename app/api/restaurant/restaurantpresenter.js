@@ -11,11 +11,11 @@ const rp = React.createFactory(RestaurantPage)
 
 const RestaurantPresenter = {
   home (req, res) {
-
     let q = req.query.sort
-    let sort = {sort: {}}
+    let sort = {sort: {'name': -1}}
 
     if (q) {
+      delete sort.sort.name
       sort.sort[q] = 1
     }
 
