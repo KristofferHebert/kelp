@@ -76,7 +76,7 @@ let ReviewsList = React.createClass({
     let Reviews = this.props.reviews.map(function (review, index) {
       var time = new Date(Date.parse(review.createdAt)).toDateString()
       return (
-          <article className='review-container' key={index}>
+          <article className='review-container' key={index} tabIndex={index + 5}>
             <div className='row'>
               <div className='col-md-8'>
                 <h3 className='review-title'>{review.title}</h3>

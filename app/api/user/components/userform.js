@@ -5,7 +5,7 @@ const UserForm = React.createClass({
   getMessage,
   createUserMessage () {
     let UserMessage = (
-      <h4 className='text-center'>
+      <h4 className='text-center' tabIndex='3'>
         <a href='/user/signup'>Don't have a Account? Sign-up!</a>
       </h4>
     )
@@ -22,7 +22,9 @@ const UserForm = React.createClass({
                 onChange={this.props.onChange}
                 className='form-control'
                 required={true}
-                autoFocus={true}/>
+                autoFocus={true}
+                tabIndex='1'
+                />
           </div>
           <div className='form-group'>
             <label htmlFor='password'> Password </label>
@@ -31,10 +33,11 @@ const UserForm = React.createClass({
                 value={this.props.form.password}
                 onChange={this.props.onChange}
                 className='form-control'
+                tabIndex='2'
                 required />
           </div>
           <div>
-            <input type='submit' name='submit' value={this.props.submitvalue} className='btn btn-primary btn-block' />
+            <input type='submit' name='submit' value={this.props.submitvalue} className='btn btn-primary btn-block' tabIndex='3' role='button'/>
           </div>
           <br />
         {this.createUserMessage()}

@@ -4,12 +4,12 @@
 <section>
   <div class="row">
     <article class="col-md-4">
-      <h1 class='restaurant-header'>{{content.name}}</h1>
+      <h1 class='restaurant-header' tabIndex='1'>{{content.name}}</h1>
       <span class='restaurantStars'>{{content.stars}}</span>
       <p class='restaurant-description'>{{content.description}}</p>
       <hr />
       <p class='restaurantHours'>{{content.hours}}</p>
-      <address><a href="https://maps.google.com?q={{content.address}}" target="_blank">{{content.address}} ( Directions )</a></address>
+      <address tabIndex='2'><a href="https://maps.google.com?q={{content.address}}" target="_blank">{{content.address}} ( Directions )</a></address>
     </article>
     <aside class="col-md-8 image-border" role="complementary">
       <img src="{{content.images}}" class="col-md-12" alt="{{content.name}} Featured Picture" title="{{content.name}} Featured Picture"/>
