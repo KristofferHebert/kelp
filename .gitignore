@@ -3,3 +3,6 @@ node_modules
 *.log
 *.psd
 config.js
+dump
+dump/*
+*.zip
