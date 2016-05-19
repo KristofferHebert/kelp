@@ -8,11 +8,12 @@ Install dependencies
 ```
 npm install
 ```
-Start Server in Development mode, restart on code change
+Start webpack and compile files on change.
 ```
 npm run compile
 ```
-Start webpack and compile files on change.
+Start Server in Development mode, restart on code change
+
 ```
 npm run dev
 ```
