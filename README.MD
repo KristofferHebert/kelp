@@ -10,7 +10,11 @@ npm install
 ```
 Start Server in Development mode, restart on code change
 ```
-npm run watch
+npm run compile
+```
+Start webpack and compile files on change.
+```
+npm run dev
 ```
 Start Server in Production mode
 ```
