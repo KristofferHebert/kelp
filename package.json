@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "compile": "webpack -p --config webpack.config.js --watch",
     "dev": "pm2-dev index.js",
-    "prod": "pm2 start app.js --name kelp.hirekris.com"
+    "prod": "NODE_ENV=production pm2 start index.js --name kelp.hirekris.com"
   },
   "repository": {
     "type": "git",
