@@ -23,7 +23,7 @@ const ReviewForm = React.createClass({
           <label htmlFor='message' hidden>Message</label>
         <textarea name='body' placeholder='Message' onChange={this.props.handleChange} className='form-control' rows='3' value={this.props.newReview.body} tabIndex='22'required />
         </fieldset>
-        <input name='submit' type='submit' className='btn btn-primary btn-block' aria-role='button' tabIndex='23'/>
+        <input name='submit' type='submit' className='btn btn-primary btn-block' tabIndex='23'/>
       </form>
     )
   },
