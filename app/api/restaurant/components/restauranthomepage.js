@@ -1,6 +1,12 @@
 import React from 'react'
+import generateStars from '../../review/components/generateStars'
 
 const RestaurantPage = React.createClass({
+  getInitialState () {
+    return {
+      filter: false
+    }
+  },
   handleSort (e) {
     e.preventDefault()
     let value = e.target.value
@@ -11,14 +17,37 @@ const RestaurantPage = React.createClass({
       window.location = window.location + '?sort=' + value
     }
   },
+  handleFilter (e) {
+    e.preventDefault()
+    var newState = this.state
+    newState.filter = Number(e.target.value)
+    console.log(newState)
+    this.setState(newState)
+  },
   getAverageReviews (reviews) {
     if (reviews.length === 0) {
-      return 0
+      return [{
+        stars: 0
+      }]
     }
     var result = reviews.reduce((a, b) => {
       return a.stars + b.stars
     })
-    return result
+
+    var stars = (Math.floor(result / reviews.length) > 1) ? Math.floor(result / reviews.length) : 1
+
+    return [{
+      stars: stars
+    }]
+  },
+  hideByFilter (reviews) {
+    if (this.state.filter === false) {
+      return false
+    }
+    var stars = this.getAverageReviews(reviews)
+    var results = stars[0].stars !== this.state.filter
+    console.log(stars[0].stars, this.state.filter, results)
+    return results
   },
   getNumberOfReviews (reviewsLength) {
     if (reviewsLength === 1 || reviewsLength === 0) {
@@ -32,15 +61,16 @@ const RestaurantPage = React.createClass({
       var reviewsLength = restaurant.reviews.length
       var restaurantStars = 'restaurant-stars restaurant-stars-' + reviewsLength
       var ti = i + 2
-
+      var self = this
       return (
-        <article className='restaurant-container row' key={'abc' + i}>
+        <article className='restaurant-container row' key={'abc' + i} hidden={self.hideByFilter(restaurant.reviews)}>
           <div className='col-md-7' tabIndex={ti}>
             <a href={'/r/' + restaurant._id}><img src={restaurant.images} className='image-border' alt={restaurant.name + ' main picture'} title={restaurant.name + ' main picture'}/></a>
           </div>
           <aside className='col-md-4'>
             <h2 className='restaurant-header'><a href={'/r/' + restaurant._id}>{restaurant.name}</a></h2>
-          <span className={restaurantStars}>{this.getNumberOfReviews(reviewsLength)}</span>
+          <div className='cb'>{generateStars(self.getAverageReviews(restaurant.reviews))}</div>
+            <p className={restaurantStars}>{this.getNumberOfReviews(reviewsLength)}</p>
             <p className='restaurantHours'>{restaurant.hours}</p>
           <address><a href={'https://maps.google.com?q=' + restaurant.address} target='_blank'>{restaurant.address} ( Directions )</a></address>
             <p className='restaurant-description'>{restaurant.description}<a href={'/r/' + restaurant._id}>Learn more</a></p>
@@ -53,20 +83,20 @@ const RestaurantPage = React.createClass({
         <section>
           <div className='bg-success padding mb bg-info row'>
           <form className='form-inline pull-right' role='form'>
-            <label forHtml='sort' className='mr'>Sort By: </label>
+            <label forHtml='sort' className='mr'>Sort by: </label>
           <select name='sort' onChange={this.handleSort} className='form-control mr' defaultValue='default' tabIndex='1'>
               <option value='default'>Select Option</option>
               <option value='newest'>Newest Restaurant</option>
               <option value='name'>Name of Restaurant</option>
             </select>
-            <label forHtml='filterbyreview' className='mr'>Filt By Rating: </label>
-          <select name='filterbyreview' onChange={this.handleSort} className='form-control' defaultValue='default' tabIndex='1'>
+            <label forHtml='filterbyreview' className='mr'>Filter by Rating: </label>
+          <select name='filterbyreview' onChange={this.handleFilter} className='form-control' defaultValue='default' tabIndex='1'>
               <option value='default'>Select Rating</option>
-              <option value='1'>One Star</option>
-              <option value='2'>Two Star</option>
-              <option value='3'>Three Star</option>
-              <option value='4'>Four Star</option>
-              <option value='5'>FIve Star</option>
+            <option value='5'>Five Star only</option>
+              <option value='4'>Four Star only</option>
+              <option value='3'>Three Star only</option>
+              <option value='2'>Two Star only</option>
+              <option value='1'>One Star only</option>
             </select>
           </form>
           </div>

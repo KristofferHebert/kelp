@@ -78,8 +78,12 @@ img.image-border, .image-border img{
   padding: 1em;
 }
 
-.cb {
-  clear: both;
+.cb:after {
+  visibility: hidden;
+	display: block;
+	content: "";
+	clear: both;
+	height: 0;
 }
 
 @media screen and (min-width: 60em) {
