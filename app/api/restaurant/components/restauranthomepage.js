@@ -54,10 +54,19 @@ const RestaurantPage = React.createClass({
           <div className='bg-success padding mb bg-info row'>
           <form className='form-inline pull-right' role='form'>
             <label forHtml='sort' className='mr'>Sort By: </label>
-            <select name='sort' onChange={this.handleSort} className='form-control' defaultValue='default' tabIndex='1'>
+          <select name='sort' onChange={this.handleSort} className='form-control mr' defaultValue='default' tabIndex='1'>
               <option value='default'>Select Option</option>
               <option value='newest'>Newest Restaurant</option>
               <option value='name'>Name of Restaurant</option>
+            </select>
+            <label forHtml='filterbyreview' className='mr'>Filt By Rating: </label>
+          <select name='filterbyreview' onChange={this.handleSort} className='form-control' defaultValue='default' tabIndex='1'>
+              <option value='default'>Select Rating</option>
+              <option value='1'>One Star</option>
+              <option value='2'>Two Star</option>
+              <option value='3'>Three Star</option>
+              <option value='4'>Four Star</option>
+              <option value='5'>FIve Star</option>
             </select>
           </form>
           </div>
