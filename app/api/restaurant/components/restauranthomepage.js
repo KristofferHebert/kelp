@@ -60,20 +60,20 @@ const RestaurantPage = React.createClass({
     var RestaurantPageContent = this.props.data.map((restaurant, i) => {
       var reviewsLength = restaurant.reviews.length
       var restaurantStars = 'restaurant-stars restaurant-stars-' + reviewsLength
-      var ti = i + 2
+      var ti = 0
       var self = this
       return (
         <article className='restaurant-container row' key={'abc' + i} hidden={self.hideByFilter(restaurant.reviews)}>
-          <div className='col-md-7' tabIndex={ti}>
-            <a href={'/r/' + restaurant._id}><img src={restaurant.images} className='image-border' alt={restaurant.name + ' main picture'} title={restaurant.name + ' main picture'}/></a>
+          <div className='col-md-7'>
+            <a href={'/r/' + restaurant._id} tabIndex={ti}><img src={restaurant.images} className='image-border' alt={restaurant.name + ' main picture'} title={restaurant.name + ' main picture'}/></a>
           </div>
           <aside className='col-md-4'>
-            <h2 className='restaurant-header'><a href={'/r/' + restaurant._id}>{restaurant.name}</a></h2>
+            <h2 className='restaurant-header'><a href={'/r/' + restaurant._id} tabIndex={ti}>{restaurant.name}</a></h2>
           <div className='cb'>{generateStars(self.getAverageReviews(restaurant.reviews))}</div>
             <p className={restaurantStars}>{this.getNumberOfReviews(reviewsLength)}</p>
             <p className='restaurantHours'>{restaurant.hours}</p>
           <address><a href={'https://maps.google.com?q=' + restaurant.address} target='_blank'>{restaurant.address} ( Directions )</a></address>
-            <p className='restaurant-description'>{restaurant.description}<a href={'/r/' + restaurant._id}>Learn more</a></p>
+            <p className='restaurant-description'>{restaurant.description}<a href={'/r/' + restaurant._id} tabIndex={ti}>Learn more</a></p>
           </aside>
         </article>
       )
@@ -84,13 +84,13 @@ const RestaurantPage = React.createClass({
           <div className='bg-success padding mb bg-info row'>
           <form className='form-inline pull-right' role='form'>
             <label forHtml='sort' className='mr'>Sort by: </label>
-          <select name='sort' onChange={this.handleSort} className='form-control mr' defaultValue='default' tabIndex='1'>
+          <select name='sort' onChange={this.handleSort} className='form-control mr' defaultValue='default' tabIndex='0'>
               <option value='default'>Select Option</option>
               <option value='newest'>Newest Restaurant</option>
               <option value='name'>Name of Restaurant</option>
             </select>
             <label forHtml='filterbyreview' className='mr'>Filter by Rating: </label>
-          <select name='filterbyreview' onChange={this.handleFilter} className='form-control' defaultValue='default' tabIndex='1'>
+          <select name='filterbyreview' onChange={this.handleFilter} className='form-control' defaultValue='default' tabIndex='0'>
               <option value='default'>Select Rating</option>
             <option value='5'>Five Star only</option>
               <option value='4'>Four Star only</option>
