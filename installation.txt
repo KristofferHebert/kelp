@@ -1,0 +1,16 @@
+curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum update && yum install -y gcc-c++ make git npm nodejs mongo -y
+git clone https://github.com/KristofferHebert/kelp.git
+npm install pm2 -g
+npm install
+curl --silent --location https://rpm.nodesource.com/setup_10.x | sudo bash -
+npm audit fix --force
+sudo touch /etc/yum.repos.d/mongodb-org-3.6.repo
+[mongodb-org-3.6]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/7Server/mongodb-org/3.6/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
+sudo service mongod start
+npm run compile
