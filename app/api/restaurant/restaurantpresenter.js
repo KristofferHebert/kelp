@@ -35,6 +35,9 @@ const RestaurantPresenter = {
         res.send(err)
       })
   },
+  add (req, res){
+    return res.render('add', {});
+  }, 
   single (req, res) {
     let id = req.params['id']
     Restaurant.Controller.get(id)
