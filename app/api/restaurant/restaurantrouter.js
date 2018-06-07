@@ -75,7 +75,7 @@ RestaurantAPIRouter.delete('/:id', (req, res) => {
 })
 
 RestaurantClientRouter.get('/add', Restaurant.Presenter.add)
-
+ 
 RestaurantClientRouter.get('/', Restaurant.Presenter.home)
 
 RestaurantClientRouter.get('/r/:id', Restaurant.Presenter.single)
